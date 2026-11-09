@@ -1,0 +1,33 @@
+PART A - FINAL VERIFICATION REPORT
+
+DATABASE COUNTS
+Customers: 1200
+Products: 40
+Orders: 12309
+Completed orders: 11110
+Cancelled orders: 1199
+
+COMPLETED REVENUE
+INR 2,998,668.80
+
+CUSTOMER CHECKS
+Age minimum: 18
+Age maximum: 60
+Gender counts: {'female': 610, 'male': 560, 'unknown': 30}
+
+ORDER AMOUNT EDA
+Mean: INR 269.91
+Median: INR 135.00
+Skewness: 4.61
+Q1: INR 64.80
+Q3: INR 297.00
+Lower fence: INR -283.50
+Upper fence: INR 645.30
+Above upper fence: 897
+Below lower fence: 0
+
+CORRELATION
+Order amount vs discount percentage: -0.095
+
+VALIDATION
+All database and revenue assertions passed.

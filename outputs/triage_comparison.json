@@ -1,0 +1,95 @@
+{
+  "zero_shot": {
+    "accuracy": 0.8571428571428571,
+    "classified_count": 147,
+    "total_tokens": 12988,
+    "tokens_per_classified_ticket": 88.35374149659864,
+    "confusion_matrix": [
+      [
+        38,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        36,
+        0,
+        0
+      ],
+      [
+        10,
+        0,
+        29,
+        0
+      ],
+      [
+        11,
+        0,
+        0,
+        23
+      ]
+    ],
+    "status_counts": {
+      "classified_json": 135,
+      "classified_keyword": 12,
+      "flagged_invalid_output": 9,
+      "skipped_empty": 4,
+      "flagged_long": 4
+    },
+    "retry_errors_recovered": 19
+  },
+  "few_shot": {
+    "accuracy": 1.0,
+    "classified_count": 147,
+    "total_tokens": 22972,
+    "tokens_per_classified_ticket": 156.2721088435374,
+    "confusion_matrix": [
+      [
+        38,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        36,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        39,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        34
+      ]
+    ],
+    "status_counts": {
+      "classified_json": 135,
+      "classified_keyword": 12,
+      "flagged_invalid_output": 9,
+      "skipped_empty": 4,
+      "flagged_long": 4
+    },
+    "retry_errors_recovered": 19
+  },
+  "pii_redaction_counts": {
+    "emails": 55,
+    "phones": 91,
+    "order_ids": 132
+  },
+  "budget_demo_status_counts": {
+    "budget_exhausted": 84,
+    "classified_json": 63,
+    "classified_keyword": 5,
+    "skipped_empty": 4,
+    "flagged_long": 4,
+    "flagged_invalid_output": 4
+  }
+}
