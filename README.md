@@ -572,9 +572,18 @@ The agent did not repeat the first two completed tools. The test refund was writ
 
 ReAct selects actions step by step using observations returned by tools. In this project, the seven ReAct scenarios required 30 model calls and 6,523 tokens in total. It handled unexpected observations, including cancelled orders, missing orders, and repeated tool calls. Its main advantage is adaptability, although repeated reasoning can increase token usage.
 
-Plan-and-Execute first creates a sequence of actions and then executes the plan. It can reduce repeated planning for predictable workflows, but a plan may need revision when an order is missing or a policy result changes the next action. A separate Plan-and-Execute benchmark was not implemented, so comparative call and token measurements are not available.
+Plan-and-Execute first creates a sequence of actions and then executes the plan. This project includes a deterministic offline teaching simulation of this approach, evaluated against the same seven scenarios as ReAct.
+| Metric | ReAct | Plan-and-Execute |
+|---|---:|---:|
+| Scenarios | 7 | 7 |
+| Model/planner calls | 30 | 7 |
+| Tokens | 6,523 | 442 estimated planner tokens |
+| Tool calls | 24 | 24 |
+| Scenario outcomes | Same across all 7 scenarios | Same across all 7 scenarios |
+**Measurement limitation:** The Plan-and-Execute planner is a deterministic offline simulation, not a live LLM planner. Its 442 tokens are estimated planner tokens only. They are not directly comparable with ReAct's 6,523 tokens, which include repeated model prompt and response usage. The benchmark therefore demonstrates the workflow structure and scenario outcomes, not a controlled comparison of model efficiency.
+**Recommendation:** ReAct is suitable for this refund-support prototype because refund eligibility depends on information discovered during execution. Iteration, token, and time limits provide safeguards against excessive tool calls. Plan-and-Execute demonstrates how a predefined action sequence can support predictable workflows. Both approaches used the same tools and produced the same outcomes in these seven test scenarios.
 
-**Recommendation:** ReAct is suitable for this refund-support prototype because refund eligibility depends on information discovered during execution. Iteration, token, and time limits provide safeguards against excessive tool calls.
+
 
 ### 8. Part D output files
 
@@ -583,6 +592,10 @@ Plan-and-Execute first creates a sequence of actions and then executes the plan.
 | `outputs/agent_runs.jsonl` | Results of seven agent scenarios |
 | `outputs/refund_ledger.jsonl` | Simulated refund and escalation records |
 | `outputs/resume_test/refund_ledger.jsonl` | Separate checkpoint-test ledger |
+| `outputs/plan_execute_benchmark/plan_execute_results.jsonl` | Detailed Plan-and-Execute benchmark results |
+| `outputs/plan_execute_benchmark/plan_execute_summary.json` | Plan-and-Execute benchmark summary |
+| `outputs/plan_execute_benchmark/refund_ledger.jsonl` | Separate Plan-and-Execute simulated transaction ledger |
+| `plan_execute_benchmark.py` | Runs the offline Plan-and-Execute benchmark |
 | `state/` | Agent execution checkpoints |
 | `data/policies/` | Policy source documents |
 | `src/policy_rag.py` | RAG retrieval and answer functions |
@@ -601,3 +614,8 @@ python test_resume.py
 The scenario and resume commands above have already been executed successfully. Do not rerun them against the existing output files unless you intentionally prepare a clean test environment, because they can create additional simulated ledger entries.
 
 No external API key or live payment integration is required.
+**Plan-and-Execute benchmark:** Run from the project root. This creates separate benchmark outputs and stops if those files already exist.
+
+```powershell
+python plan_execute_benchmark.py
+```

@@ -1,0 +1,21 @@
+{
+  "approach": "Plan-and-Execute",
+  "planner_type": "deterministic offline teaching simulation",
+  "scenarios": 7,
+  "planner_calls": 7,
+  "estimated_planner_tokens": 442,
+  "execution_model_calls": 0,
+  "execution_model_tokens": 0,
+  "total_tool_calls": 24,
+  "results": {
+    "S1": "REFUND",
+    "S2": "REFUND",
+    "S3": "ESCALATE",
+    "S4": "DENIED",
+    "S5": "DENIED",
+    "S6": "NOT_FOUND",
+    "S7": "FALLBACK_MAX_ITERATIONS"
+  },
+  "separate_ledger": "outputs\\plan_execute_benchmark\\refund_ledger.jsonl",
+  "note": "Planner tokens are estimated with mock_llm.est_tokens through the offline response helper. They are not directly equivalent to ReAct's repeated mock_llm.chat prompt/response token totals."
+}
