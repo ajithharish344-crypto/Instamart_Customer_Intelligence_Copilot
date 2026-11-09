@@ -619,3 +619,16 @@ No external API key or live payment integration is required.
 ```powershell
 python plan_execute_benchmark.py
 ```
+## Overview
+
+## Reproduce
+
+## Part A – Data Audit, Cleaning, SQL and EDA
+
+## Part B – Customer Segmentation and Lapse Prediction
+
+## Part C – Customer Support Ticket Triage
+
+## Part D – Policy RAG and Refund Support Agent
+
+## Limitations and Next Steps
